@@ -6,6 +6,6 @@ function index()
 	end
 	local page
 	page = entry({"admin", "network", "bbr"}, cbi("bbr"), _("bbr"), 101)
-	page.i18n = "bbr"
+	page.i18n = "BBR"
 	page.dependent = true
 end
