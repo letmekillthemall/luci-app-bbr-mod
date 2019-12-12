@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\luasrc",
+    "\\luasrc\\model",
+    "\\luasrc\\model\\cbi",
+    "\\po",
+    "\\po\\zh-cn",
+    "\\root",
+    "\\root\\etc",
+    "\\root\\etc\\init.d",
+    "\\root\\etc\\uci-defaults"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\root\\etc\\config\\bbr",
   "PreviewInSolutionExplorer": false
 }
