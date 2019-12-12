@@ -1,5 +1,5 @@
 #!/bin/sh /etc/rc.common
-#-- Copyright (C) 2018 dz <dingzhong110@gmail.com>
+#-- Copyright (C) 2019 letmekillthemall <qq1034309713@live.com>
 
 START=99
 
@@ -16,11 +16,11 @@ start(){
 			echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf
 		elif [ $bbr_mod_enable -eq 1 ]; then
 			rmmod bbr
-			insmod tcp_bbr_mod
+			insmod tcp-bbr-nanqinlang
 			sleep 3
-			echo "tcp_bbr_mod" > /etc/modules.d/bbr
+			echo "tcp-bbr-nanqinlang" > /etc/modules.d/bbr
 			sed -i '/bbr/d' /etc/firewall.user
-			echo "net.ipv4.tcp_congestion_control=tcp_bbr_mod" >> /etc/sysctl.conf
+			echo "net.ipv4.tcp_congestion_control=tcp-bbr-nanqinlang" >> /etc/sysctl.conf
 		fi
 		sysctl -p
 		if [ $re -eq 0 ]; then
@@ -36,7 +36,7 @@ stop(){
     if [ $enable -ne 1 ]; then
 		echo "disable"
 		rmmod bbr
-		rmmod tcp_bbr_mod
+		rmmod tcp-bbr-nanqinlang
 		echo "net.ipv4.tcp_congestion_control=cubic" >> /etc/sysctl.conf
 		sed -i '/bbr/d' /etc/sysctl.conf
 		sysctl -p

@@ -1,4 +1,4 @@
-#-- Copyright (C) 2018 dz <dingzhong110@gmail.com>
+#-- Copyright (C) 2019 letmekillthemall <qq1034309713@live.com>
 
 require("nixio.fs")
 require("luci.http")
@@ -8,6 +8,8 @@ m = Map("bbr", translate("BBR"),
 
 if luci.sys.call("sysctl net.ipv4.tcp_congestion_control | grep bbr >/dev/null") == 0 then
 	m = Map("bbr", translate("bbr"), "%s - %s" %{translate("bbr"), translate("<strong><font color=\"green\">Running</font></strong>")})
+elseif luci.sys.call("sysctl net.ipv4.tcp_congestion_control | grep nanqinlang >/dev/null") == 0 then
+	m = Map("bbr", translate("bbr"), "%s - %s" %{translate("bbr"), translate("<strong><font color=\"purple\">Running</font></strong>")})
 else
 	m = Map("bbr", translate("bbr"), "%s - %s" %{translate("bbr"), translate("<strong><font color=\"red\">Not Running</font></strong>")})
 end
@@ -21,7 +23,7 @@ enable = s:option(Flag, "enabled", translate("Enable"), translate("Enable Too"))
 enable.default = 0
 enable.rmempty = false
 
----- ALL Eanble
+---- ALL Enable
 enable = s:option(Flag, "bbr_mod_enabled", translate("BBR Mod Enabled"))
 enable.default = 0
 enable.rmempty = false
